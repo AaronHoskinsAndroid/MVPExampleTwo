@@ -7,6 +7,25 @@
     android:orientation="vertical"
     tools:context=".view.activities.mainactivity.MainActivity">
 
-    
+    <EditText
+        android:id="@+id/etNumOfResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/please_enter_number_of_results_to_query_for"/>
+
+    <EditText
+        android:id="@+id/etGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/please_enter_male_or_female"/>
+
+    <Button
+        android:id="@+id/btnQueryResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/execute_query_and_display_results"
+        android:onClick="onClick"/>
+
 
 </LinearLayout>

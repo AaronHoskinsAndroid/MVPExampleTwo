@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MVPExample</string>
+    <string name="please_enter_number_of_results_to_query_for">Please enter number of results to query for</string>
+    <string name="please_enter_male_or_female">Please enter \'male\' or \'female\'</string>
+    <string name="execute_query_and_display_results">Execute Query and Display Results</string>
 </resources>
