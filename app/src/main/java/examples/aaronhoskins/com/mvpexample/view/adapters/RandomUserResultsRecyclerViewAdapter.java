@@ -14,17 +14,16 @@ import com.bumptech.glide.Glide;
 import examples.aaronhoskins.com.mvpexample.R;
 import examples.aaronhoskins.com.mvpexample.model.datasource.randomuser.RandomUserResults;
 import examples.aaronhoskins.com.mvpexample.model.datasource.randomuser.Result;
-import examples.aaronhoskins.com.mvpexample.view.activities.randomuserresultsactivity.RandomUserResultsContract;
-import examples.aaronhoskins.com.mvpexample.view.activities.randomuserresultsactivity.RandomUserResultsPresenter;
+
 
 public class RandomUserResultsRecyclerViewAdapter
         extends RecyclerView.Adapter<RandomUserResultsRecyclerViewAdapter.ViewHolder> {
 
     RandomUserResults randomUserResults;
-    RandomUserResultsContract randomUserResultsContract;
-    public RandomUserResultsRecyclerViewAdapter(RandomUserResults randomUserResults, RandomUserResultsContract randomUserResultsContract) {
+
+    public RandomUserResultsRecyclerViewAdapter(RandomUserResults randomUserResults) {
         this.randomUserResults = randomUserResults;
-        this.randomUserResultsContract = randomUserResultsContract;
+
     }
 
     @NonNull
@@ -32,7 +31,7 @@ public class RandomUserResultsRecyclerViewAdapter
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.random_user_item, parent, false), randomUserResultsContract);
+                .inflate(R.layout.random_user_item, parent, false));
     }
 
     @Override
@@ -42,6 +41,10 @@ public class RandomUserResultsRecyclerViewAdapter
                 .with(holder.itemView)
                 .load(currentBindingResult.getPicture().getThumbnail())
                 .into(holder.imgRandomUserImage);
+        holder.tvUserName.setText(currentBindingResult.getName().getFirst());
+        holder.tvUserEmail.setText(currentBindingResult.getEmail());
+        holder.tvUserDateOfBirth.setText(currentBindingResult.getDob().getDate());
+
 
     }
 
@@ -50,19 +53,19 @@ public class RandomUserResultsRecyclerViewAdapter
         return randomUserResults.getResults().size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements RandomUserResultsContract {
-        RandomUserResultsContract randomUserResultsContract;
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgRandomUserImage;
         TextView tvUserName;
         TextView tvUserEmail;
         TextView tvUserDateOfBirth;
-        public ViewHolder(View itemView, RandomUserResultsContract randomUserResultsContract)  {
+        public ViewHolder(View itemView)  {
             super(itemView);
-           this.randomUserResultsContract = randomUserResultsContract;
-           imgRandomUserImage = itemView.findViewById(R.id.imgRandomUser);
+            imgRandomUserImage = itemView.findViewById(R.id.imgRandomUser);
            tvUserName = itemView.findViewById(R.id.tvUserName);
            tvUserEmail = itemView.findViewById(R.id.tvUserEmail);
            tvUserDateOfBirth = itemView.findViewById(R.id.tvDateOfBirth);
         }
+
+
     }
 }

@@ -1,6 +1,7 @@
 
 package examples.aaronhoskins.com.mvpexample.model.datasource.randomuser;
 
+import java.util.ArrayList;
 import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,7 +14,7 @@ public class RandomUserResults implements Parcelable
 
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<Result> results = new ArrayList<>();
     @SerializedName("info")
     @Expose
     private Info info;
